@@ -1,4 +1,4 @@
-#include "h_utility.hpp"
+#include "h_string.hpp"
 
 #include <string>
 #include <vector>
@@ -13,7 +13,7 @@ namespace h_utility{
  * notes:
  * 1. the string read from a line of a file DOES NOT contain the '\n', therefore the spliting of an empty line will return an empty vector of string
  */
-vector<string> split_string_single_delim(string str, string delim)
+vector<string> string_split_string_single_delim(string str, string delim)
 {
 	vector<string> strs;	// returned vector
 	int str_len = str.length();
@@ -48,9 +48,9 @@ vector<string> split_string_single_delim(string str, string delim)
 /**
  * wrapper for vector<string> split_string_single_delim(string str, string delim)
  */
-vector<string> split(string str, string delim)
+vector<string> string_split(string str, string delim)
 {
-	return split_string_single_delim(str, delim);
+	return string_split_string_single_delim(str, delim);
 }
 
 /**
@@ -59,10 +59,10 @@ vector<string> split(string str, string delim)
  * notes:
  * 1. the string read from a line of a file DOES NOT contain the '\n', therefore the spliting of an empty line will return an empty vector of string
  */
-vector<string> split_string_multi_delim(string str, string delim_str)
+vector<string> string_split_string_multi_delim(string str, string delim_str)
 {
 	vector<string> strs;	// returned vector
-	vector<string> delims = split_string_single_delim(delim_str, ">");
+	vector<string> delims = string_split_string_single_delim(delim_str, ">");
 	int str_len = str.length();
 	int num_delims = delims.size();	// lengths of the delimitations
 	vector<int> delim_lens(num_delims);
@@ -125,9 +125,9 @@ vector<string> split_string_multi_delim(string str, string delim_str)
 /**
  * wrapper for vector<string> split_string_multi_delim(string str, string delim_str)
  */
-vector<string> splitm(string str, string delim_str)
+vector<string> string_splitm(string str, string delim_str)
 {
-	return split_string_multi_delim(str, delim_str);
+	return string_split_string_multi_delim(str, delim_str);
 }
 
 }	// end namespace hstd
